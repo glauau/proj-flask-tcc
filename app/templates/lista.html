@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+{% block conteudo %}
+        <a class="btn btn-primary" href="{{ url_for('novo') }}">Novo Filme</a>
+        <table class="table table-striped table-responsive table-bordered">
+            <thead class="thead-default">
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Ano</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for filme in filmes %}
+                <tr>
+                    <td>{{ filme.nome }}</td>
+                    <td>{{ filme.categoria }}</td>
+                    <td>{{ filme.ano }}</td>
+                    <td><a href="{{ url_for('editar', id=filme.id)}}">Editar</a></td>
+                    <td><a href="{{ url_for('deletar', id=filme.id)}}">Deletar</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}
